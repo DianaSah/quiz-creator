@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 
 import { fetchData } from '../../store/quizApi';
-import { setQuiz, createNewQuiz, editQuiz, selectQuizzes } from '../../store/quizSlice';
+import { setQuiz, selectQuizzes } from '../../store/quizSlice';
 import { Button } from '../../components/button/Button';
 import { transformYoutubeUrl } from '../../helpers/dataTransform';
 

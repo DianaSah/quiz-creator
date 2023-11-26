@@ -16,7 +16,10 @@ export function QuizPreview({
       />
       <div className={styles.cards}>
         {data?.questions_answers?.map((questions) => 
-          <QuizCard key={questions.id} {...questions} />
+          <QuizCard
+            key={questions.id}
+            {...questions}
+          />
         )}
       </div>
     </div>

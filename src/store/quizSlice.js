@@ -14,8 +14,6 @@ export const quizSlice = createSlice({
     },
     editQuiz: (state, action) => {
       state[0] = action.payload;
-      console.log(state);
-      console.log(action.payload);
     }
   }
 });

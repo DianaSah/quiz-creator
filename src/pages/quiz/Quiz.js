@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 
-import { setQuiz, createNewQuiz, editQuiz, selectQuizById } from '../../store/quizSlice';
-import { QuizCard } from '../../components/quizCard/QuizCard';
+import {
+  createNewQuiz,
+  editQuiz,
+  selectQuizById
+} from '../../store/quizSlice';
+import { createData, updateData } from '../../store/quizApi';
 import { Button } from '../../components/button/Button';
-import { Modal } from '../../components/modal/Modal';
 import { QuizEditor } from '../../components/quizEditor/QuizEditor';
 
 import styles from './Quiz.module.scss';
@@ -34,17 +37,34 @@ export function Quiz() {
   const [ quiz ] = useSelector((state) => selectQuizById(state, id));
 
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [newQuiz, setNewQuiz] = useState(quiz || initialQuiz);
 
   const dispatch = useDispatch();
 
+  async function handleCreate(formData) {
+    try {
+      const { data } = await createData(formData);
+      dispatch(createNewQuiz(data));  
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async function handleUpdate(formData) {
+    try {
+      const { data } = await updateData(formData);
+      dispatch(editQuiz(data));  
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   const handleFormSubmit = (formData) => {
-    // console.log(e);
-    // console.log(e.target.text.value);
-    console.log(formData);
     setNewQuiz(formData);
-    dispatch(editQuiz(formData));
+
+    id && id !== 'new'
+    ? handleUpdate(formData)
+    : handleCreate(formData);
   }
 
   return (
@@ -67,20 +87,6 @@ export function Quiz() {
       {isPreviewOpen
         ? <QuizPreview data={newQuiz} />
         : <QuizEditor data={newQuiz} handleFormSubmit={handleFormSubmit} />
-      }
-      
-      {isModalOpen && 
-        <Modal
-          isOpen={isModalOpen}
-          mode='create'
-          onClose={() => setIsModalOpen(false)}
-          onSave={() => {
-            dispatch(createNewQuiz(newQuiz));
-            setIsModalOpen(false);
-          }}
-          data={newQuiz}
-          setNewQuiz={setNewQuiz}
-        />
       }
     </div>
   )

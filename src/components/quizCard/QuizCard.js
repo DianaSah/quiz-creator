@@ -4,9 +4,7 @@ import styles from './QuizCard.module.scss';
 
 export function QuizCard({
   text,
-  answers,
-  feedback_true,
-  feedback_false
+  answers
 }) {
   return (
     <div className={styles.container}>

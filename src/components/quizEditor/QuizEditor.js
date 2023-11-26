@@ -10,8 +10,8 @@ export function QuizEditor({
 }) {
   const [data, setData] = useState(initData);
 
-  const handleChange = (e) => {
-    const newData = {...data, title: e.target.value};
+  const handleChange = (e, inputName) => {
+    const newData = {...data, [inputName]: e.target.value};
     setData(newData);
   }
 
@@ -27,11 +27,17 @@ export function QuizEditor({
       <Input
         label='Enter quiz title:'
         value={data.title}
-        onChange={handleChange}
+        onChange={(e) => handleChange(e, 'title')}
       />
       <Input
         label='Enter quiz description:'
         value={data.description}
+        onChange={(e) => handleChange(e, 'description')}
+      />
+      <Input
+        label='YouTube video url:'
+        value={data.url}
+        onChange={(e) => handleChange(e, 'url')}
       />
       <QuestionsEditor questionsAnswers={data.questions_answers} handleQuestions={handleQuestions} />
       <Button type='submit'>Submit</Button>
