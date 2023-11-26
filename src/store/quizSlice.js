@@ -12,8 +12,10 @@ export const quizSlice = createSlice({
     createNewQuiz: (state, action) => {
       return [...state, action.payload];
     },
-    editQuiz: (state) => {
-
+    editQuiz: (state, action) => {
+      state[0] = action.payload;
+      console.log(state);
+      console.log(action.payload);
     }
   }
 });
@@ -22,6 +24,6 @@ export const {setQuiz, createNewQuiz, editQuiz } = quizSlice.actions;
 
 // Selectors
 export const selectQuizzes = (state) => state.quizzes;
-export const selectQuizById = (state, id) => state.quizzes.filter(quiz => quiz.id == id);
+export const selectQuizById = (state, id) => state.quizzes?.filter(quiz => quiz.id == id);
 
 export default quizSlice.reducer;

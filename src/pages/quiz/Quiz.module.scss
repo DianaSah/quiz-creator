@@ -2,10 +2,13 @@
   text-align: center;
   padding: 1rem;
 
-  .backButton {
-    @media (min-width: 768px) {
-      position: absolute;
-      left: 1rem
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    @media (min-width: 480px) {
+      flex-direction: row;
     }
   }
 }
