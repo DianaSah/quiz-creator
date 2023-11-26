@@ -10,7 +10,7 @@ export function QuizCard({
     <div className={styles.container}>
       <div className={styles.question}>{text}</div>
       <div className={styles.answers}>
-        {answers.map((answer) => <Answer {...answer}/>)}
+        {answers?.map((answer) => <Answer key={answer.id} {...answer}/>)}
       </div>
     </div>
   )
