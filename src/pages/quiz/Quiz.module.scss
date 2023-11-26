@@ -1,0 +1,21 @@
+.container {
+  text-align: center;
+  padding: 1rem;
+
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    @media (min-width: 480px) {
+      flex-direction: row;
+    }
+  }
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}

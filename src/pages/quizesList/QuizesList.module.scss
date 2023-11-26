@@ -1,0 +1,12 @@
+.container {
+  padding: 1rem;
+  text-align: center;
+
+  .card {
+    width: 19rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+    transition-duration: 500ms;
+  }
+}
