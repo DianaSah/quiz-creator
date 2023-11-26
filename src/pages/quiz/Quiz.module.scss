@@ -1,0 +1,18 @@
+.container {
+  text-align: center;
+  padding: 1rem;
+
+  .backButton {
+    @media (min-width: 768px) {
+      position: absolute;
+      left: 1rem
+    }
+  }
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}

@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { fetchData } from './quizApi';
 
 const initialState = [];
 
@@ -11,8 +10,7 @@ export const quizSlice = createSlice({
       return action.payload;
     },
     createNewQuiz: (state, action) => {
-      // const newQuiz = action.payload;
-      // state.quizzes.questions_answers.push(newQuiz);
+      return [...state, action.payload];
     },
     editQuiz: (state) => {
 
@@ -22,7 +20,8 @@ export const quizSlice = createSlice({
 
 export const {setQuiz, createNewQuiz, editQuiz } = quizSlice.actions;
 
-// Selector
-export const selectData = (state) => state.quizzes;
+// Selectors
+export const selectQuizzes = (state) => state.quizzes;
+export const selectQuizById = (state, id) => state.quizzes.filter(quiz => quiz.id == id);
 
 export default quizSlice.reducer;

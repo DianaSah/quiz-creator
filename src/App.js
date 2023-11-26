@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import { QuizesList } from './pages/quizesList/QuizesList';
-import { Quiz } from './components/quiz/Quiz';
+import { Quiz } from './pages/quiz/Quiz';
 
 import styles from './App.scss';
 

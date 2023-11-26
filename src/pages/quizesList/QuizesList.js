@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom";
 
 import { fetchData } from '../../store/quizApi';
-import { setQuiz, createNewQuiz, editQuiz } from '../../store/quizSlice';
+import { setQuiz, createNewQuiz, editQuiz, selectQuizzes } from '../../store/quizSlice';
 import { Button } from '../../components/button/Button';
 import { transformYoutubeUrl } from '../../helpers/dataTransform';
 
 import styles from './QuizesList.module.scss';
 
 export function QuizesList() {
+  const navigate = useNavigate();
+
   const dispatch = useDispatch();
-  const quizzes = useSelector((state) => state.quizzes);
+  const quizzes = useSelector((state) => selectQuizzes(state));
 
   async function getQuizData() {
     try {
@@ -38,6 +41,7 @@ export function QuizesList() {
           />
           <Button
             mode='primary'
+            onClick={() => navigate(`/${quiz.id}`)}
           >
             <span>Edit</span>
           </Button>
@@ -45,6 +49,7 @@ export function QuizesList() {
       }
       <Button
         mode='primary'
+        onClick={() => navigate('/new')}
       >
         <span>Add new quiz</span>
       </Button>
