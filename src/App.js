@@ -10,8 +10,8 @@ function App() {
   return (
     <div className={styles.app}>
       <Routes>
-        <Route path="/" exact Component={QuizesList} />
-        <Route path="/:id" Component={Quiz} />
+        <Route path="/quiz-creator/" Component={QuizesList} />
+        <Route path="/quiz-creator/:id" Component={Quiz} />
       </Routes>
     </div>
   );

@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = [];
 
@@ -22,6 +22,6 @@ export const {setQuiz, createNewQuiz, editQuiz } = quizSlice.actions;
 
 // Selectors
 export const selectQuizzes = (state) => state.quizzes;
-export const selectQuizById = (state, id) => state.quizzes?.filter(quiz => quiz.id == id);
+export const selectQuizById = (state, id) => state.quizzes?.filter(quiz => Number(quiz.id) === Number(id));
 
 export default quizSlice.reducer;
