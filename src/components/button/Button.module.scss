@@ -3,6 +3,12 @@
   font-size: 16px;
   border-radius: 1rem;
   min-width: 10rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: white;
+    transition-duration: 500ms;
+  }
 }
 
 .primary {

@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { Quiz } from './components/quiz/Quiz';
+import { QuizesList } from './pages/quizesList/QuizesList';
 
 import styles from './App.scss';
 
 function App() {
   return (
     <div className={styles.app}>
-      <Quiz />
+      <QuizesList />
     </div>
   );
 }
